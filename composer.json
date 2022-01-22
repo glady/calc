@@ -1,0 +1,20 @@
+{
+    "name": "glady/calc", 
+    "description": "", 
+    "license": "MIT", 
+    "authors": [
+        {
+            "name": "Gladysch, Mike"
+        }
+    ], 
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {}, 
+    "autoload": {
+        "psr-4": {
+            "glady\\calc": "src"
+        }
+    }
+} 
