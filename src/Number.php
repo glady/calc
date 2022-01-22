@@ -1,6 +1,6 @@
 <?php
 
-namespace glady/calc;
+namespace glady\calc;
 
 class Number
 {
