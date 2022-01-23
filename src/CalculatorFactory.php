@@ -2,6 +2,11 @@
 
 namespace glady\calc;
 
+use glady\calc\Calculator\BcmathCalculator;
+use glady\calc\Calculator\GmpCalculator;
+use glady\calc\Calculator\StandardFloatCalculator;
+use function extension_loaded;
+
 class CalculatorFactory
 {
     public const STANDARD_FLOAT = 'float';
@@ -13,7 +18,7 @@ class CalculatorFactory
         $this->priorities = $priorities;
     }
     
-    public function create(string $type = null): Calculator
+    public function create(string $type = null): CalculatorInterface
     {
         $type = $type ?? $this->determineType();
         
