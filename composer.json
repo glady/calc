@@ -18,6 +18,7 @@
     "require-dev": {}, 
     "autoload": {
         "psr-4": {
+            "glady\\calc\\tests": "tests", 
             "glady\\calc": "src"
         }
     }
