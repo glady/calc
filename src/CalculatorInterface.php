@@ -4,11 +4,17 @@ namespace glady\calc;
 
 interface CalculatorInterface
 {
+    // unary operators
+    public function round(Number $a, int $scale = 0): Number;
+    public function ceil(Number $a, int $scale = 0): Number;
+    public function floor(Number $a, int $scale = 0): Number;
+    public function abs(Number $a): Number;
+    
     // binary operators
     public function add(Number $a, Number $b): Number;
     public function sub(Number $a, Number $b): Number;
     public function mul(Number $a, Number $b): Number;
-    public function div(Number $a, Number $b): Number;
+    public function div(Number $a, Number $b, bool $disableFractal = false): Number;
     public function pow(Number $a, Number $b): Number;
     
     // aggregations
@@ -33,5 +39,7 @@ interface CalculatorInterface
     public function notNearlyEqual(Number $a, Number $b, Number $epsilon): bool;
     
     // conditions
-//    public function if(bool $condition, Number $then, Number $else): Number;
+    public function if(bool $condition, Number $then, Number $else): Number;
+
+    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $tousandSeparator = ''): string
 }

@@ -25,4 +25,42 @@ abstract class AbstractCalculator implements CalculatorInterface
     {
         return !$this->greater($a, $b);
     }
+    
+    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $thousandSeparator = ''): string
+    {
+        if ($scale !== null) {
+            $number = $this->round($number, $scale);
+        }
+        $value = $number->getValue();
+
+        // handle fractals
+        if (strstr($value, '/')) {
+            [$num, $denum] = explode('/', $value, 2);
+            $value = $this->div($num, $denum, true);
+        }
+
+        // has decimals? 
+        if (strstr($value, '.')) {
+            [$integerPart, $decimalPart] = explode('.', $value, 2); 
+        } else {
+            [$integerPart, $decimalPart] = [$value, null];
+        }
+
+         // add thousand separators
+        if ($htousandSeparator) {
+            $integerPart = strrev(
+                chunk_split(
+                    strrev($integerPart),
+                    3, 
+                    $thousandSeparator
+                )
+            );
+        }
+
+        if ($decimalPart === null || trim($decimalPart, '0') === '') {
+            return $integerPart;
+        }
+        
+        return $integerPart. $decimalSeparator. $decimalPart;
+    }
 }
