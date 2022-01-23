@@ -14,7 +14,8 @@ interface CalculatorInterface
     public function add(Number $a, Number $b): Number;
     public function sub(Number $a, Number $b): Number;
     public function mul(Number $a, Number $b): Number;
-    public function div(Number $a, Number $b, bool $disableFractal = false): Number;
+    public function div(Number $a, Number $b, int $scale = null): Number;
+    public function divWithFraction(Number $a, Number $b): Number;
     public function pow(Number $a, Number $b): Number;
     
     // aggregations
@@ -41,5 +42,6 @@ interface CalculatorInterface
     // conditions
     public function if(bool $condition, Number $then, Number $else): Number;
 
-    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $tousandSeparator = ''): string
+    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $tousandSeparator = ''): string;
+    public function convertFractionToDecimals(Number $a, int $scale = null): Number; 
 }
