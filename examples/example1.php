@@ -3,9 +3,11 @@
 require __DIR__ . '/bootstrap.php';
 
 echo <<<HEADER
+
     [Example 1 of project glady/calc]
 
 (i) This file shows basic usage of calculator factory and their dependency on system configuration
+
 HEADER;
 
 $calculatorFactory = new \glady\calc\CalculatorFactory();
