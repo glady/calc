@@ -2,8 +2,6 @@
 
 namespace glady\calc;
 
-use glady\calc\CalculatorInterface;
-
 abstract class AbstractCalculator implements CalculatorInterface
 {
     public function notEqual(Number $a, Number $b): bool
@@ -25,8 +23,17 @@ abstract class AbstractCalculator implements CalculatorInterface
     {
         return !$this->greater($a, $b);
     }
-    
-    public function convertFractionToDecimals(Number $a, int $scale = null): Number
+    public function notNearlyEqual(Number $a, Number $b, Number $epsilon): bool
+    {
+        return $this->nearlyEqual($a, $b, $epsilon);
+    }
+
+    public function if(bool $condition, Number $then, Number $else): Number
+    {
+        return $condition ? $then : $else;
+    }
+
+    public function convertFractionToDecimals(Number $number, int $scale = null): Number
     {
         if ($number->isFraction()) {
             [$num, $denum] = $number->getFraction();
@@ -42,5 +49,5 @@ abstract class AbstractCalculator implements CalculatorInterface
             $number = $this->round($number, $scale);
         }
         return $number->format($decimalSeparator, $thousandSeparator);
-    } 
+    }
 }

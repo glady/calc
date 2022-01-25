@@ -24,6 +24,21 @@ $bcmathCalculator = $calculatorFactory->create('bcmath');
 echo " * factory can create an instance of ". get_class($bcmathCalculator) . "\n";
 $gmpCalculator = $calculatorFactory->create('gmp');
 echo " * factory can create an instance of ". get_class($gmpCalculator) . "\n";
-$floatDependentCalculator = $calculatorFactory->create('float');
-echo " * factory can create an instance of ". get_class($floatDependentCalculator) . "\n";
+$floatCalculator = $calculatorFactory->create('float');
+echo " * factory can create an instance of ". get_class($floatCalculator) . "\n";
 
+$priorities = ['float', 'bcmath', 'gmp'];
+$calculatorFactory = new \glady\calc\CalculatorFactory($priorities);
+echo " * factory priority can be changed, e.g. " . json_encode($priorities) . " creates per default an instance of ". get_class($calculatorFactory->create()) . "\n";
+
+$priorities = ['bcmath', 'float', 'gmp'];
+$calculatorFactory = new \glady\calc\CalculatorFactory($priorities);
+echo " * factory priority can be changed, e.g. " . json_encode($priorities) . " creates per default an instance of ". get_class($calculatorFactory->create()) . "\n";
+
+$priorities = [];
+$calculatorFactory = new \glady\calc\CalculatorFactory($priorities);
+echo " * factory priority can be empty, e.g. " . json_encode($priorities) . " creates per default an instance of ". get_class($calculatorFactory->create()) . "\n";
+
+$priorities = ['gmp', 'bcmath', 'float'];
+$calculatorFactory = new \glady\calc\CalculatorFactory($priorities);
+echo " * factory standard priority is " . json_encode($priorities) . ", creates per default an instance of ". get_class($calculatorFactory->create()) . "\n";

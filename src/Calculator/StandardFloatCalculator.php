@@ -21,7 +21,7 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
     public function ceil(Number $a, int $scale = 0): Number
     {
         if ($scale) {
-            $f = $this->pow('10', (string)$scale);
+            $f = $this->pow(new Number('10'), new Number((string) $scale));
             $a = $this->mul($a, $f);
         }
         $result = ceil($a->getValue());
@@ -34,7 +34,7 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
     public function floor(Number $a, int $scale = 0): Number
     {
         if ($scale) {
-            $f = $this->pow('10', (string)$scale);
+            $f = $this->pow(new Number('10'), new Number((string)$scale));
             $a = $this->mul($a, $f);
         }
         $result = floor($a->getValue());
@@ -52,22 +52,22 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
 
     public function add(Number $a, Number $b): Number
     {
-        // TODO: Implement add() method.
+        return new Number($a->getValue() + $b->getValue());
     }
 
     public function sub(Number $a, Number $b): Number
     {
-        // TODO: Implement sub() method.
+        return new Number($a->getValue() - $b->getValue());
     }
 
     public function mul(Number $a, Number $b): Number
     {
-        // TODO: Implement mul() method.
+        return new Number($a->getValue() * $b->getValue());
     }
 
     public function div(Number $a, Number $b, int $scale = null): Number
     {
-        // TODO: Implement div() method.
+        return new Number($a->getValue() / $b->getValue());
     }
 
     public function divWithFraction(Number $a, Number $b): Number
@@ -77,7 +77,7 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
 
     public function pow(Number $a, Number $b): Number
     {
-        // TODO: Implement pow() method.
+        return new Number(pow($a->getValue(), $b->getValue()));
     }
 
     public function sum(Number ...$numbers): Number
@@ -112,26 +112,17 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
 
     public function equal(Number $a, Number $b): bool
     {
-        // TODO: Implement equal() method.
+        return $a->getValue() === $b->getValue();
     }
 
     public function greater(Number $a, Number $b): bool
     {
-        // TODO: Implement greater() method.
+        return $a->getValue() > $b->getValue();
     }
 
     public function nearlyEqual(Number $a, Number $b, Number $epsilon): bool
     {
-        // TODO: Implement nearlyEqual() method.
+        return abs($a->getValue() - $b->getValue()) < $epsilon->getValue();
     }
 
-    public function notNearlyEqual(Number $a, Number $b, Number $epsilon): bool
-    {
-        // TODO: Implement notNearlyEqual() method.
-    }
-
-    public function if(bool $condition, Number $then, Number $else): Number
-    {
-        // TODO: Implement if() method.
-    }
 }

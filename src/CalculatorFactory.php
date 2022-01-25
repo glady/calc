@@ -24,18 +24,12 @@ class CalculatorFactory
     public function create(string $type = null): CalculatorInterface
     {
         $type = $type ?? $this->determineType();
-        
-        switch ($type) {
-            case self::GMP:
-                return new GmpCalculator();
-            
-            case self::BCMATH:
-                return new BcmathCalculator();
-            
-            case self::STANDARD_FLOAT:
-            default:
-                return new StandardFloatCalculator();
-        }
+
+        return match ($type) {
+            self::GMP => new GmpCalculator(),
+            self::BCMATH => new BcmathCalculator(),
+            default => new StandardFloatCalculator(),
+        };
     }
     
     public function determineType(): string

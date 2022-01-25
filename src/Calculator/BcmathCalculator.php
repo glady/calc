@@ -103,14 +103,4 @@ class BcmathCalculator extends AbstractCalculator implements CalculatorInterface
     {
         // TODO: Implement nearlyEqual() method.
     }
-
-    public function notNearlyEqual(Number $a, Number $b, Number $epsilon): bool
-    {
-        // TODO: Implement notNearlyEqual() method.
-    }
-
-    public function if(bool $condition, Number $then, Number $else): Number
-    {
-        // TODO: Implement if() method.
-    }
 }

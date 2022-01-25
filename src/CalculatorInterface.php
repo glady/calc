@@ -42,6 +42,6 @@ interface CalculatorInterface
     // conditions
     public function if(bool $condition, Number $then, Number $else): Number;
 
-    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $tousandSeparator = ''): string;
-    public function convertFractionToDecimals(Number $a, int $scale = null): Number; 
+    public function format(Number $number, int $scale = null, string $decimalSeparator = '.', string $thousandSeparator = ''): string;
+    public function convertFractionToDecimals(Number $number, int $scale = null): Number;
 }
