@@ -12,8 +12,11 @@ class CalculatorFactory
     public const STANDARD_FLOAT = 'float';
     public const BCMATH = 'bcmath';
     public const GMP = 'gmp';
-    
-    public function __constuct(array $priorities = [self::GMP, self::BCMATH])
+
+    /** @var array|string[] */
+    private array $priorities;
+
+    public function __construct(array $priorities = [self::GMP, self::BCMATH])
     {
         $this->priorities = $priorities;
     }
@@ -22,7 +25,7 @@ class CalculatorFactory
     {
         $type = $type ?? $this->determineType();
         
-        switch ($$type) {
+        switch ($type) {
             case self::GMP:
                 return new GmpCalculator();
             
