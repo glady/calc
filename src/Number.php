@@ -6,14 +6,14 @@ use RuntimeException;
 use function chunk_split;
 use function explode;
 use function strrev;
-use function strstr;
+use function str_contains;
 use function trim;
 
 class Number
 {
     private ?string $value;
     
-    public function __contruct(string $value = null)
+    public function __construct(string $value = null)
     {
         $this->setValue($value);
     }
@@ -31,13 +31,20 @@ class Number
     public function isFraction(): bool 
     {
         return $this->value !== null
-            && (bool) strstr('/', $this->value);
+            && str_contains($this->value, '/');
     }
     
     public function getFraction(): array
     {
         if ($this->isFraction()) {
-            return explode('/', $this->value, 2);
+            [$num, $denum] = explode('/', $this->value, 2);
+            if ($num === '') {
+                $num = null;
+            }
+            if ($denum === '') {
+                $denum = null;
+            }
+            return [$num, $denum];
         }
         return [$this->value, '1'];
     }
@@ -49,14 +56,14 @@ class Number
         }
           
         // has decimals? 
-        if (strstr($this->value, '.')) {
+        if (str_contains($this->value, '.')) {
             [$integerPart, $decimalPart] = explode('.', $this->value, 2); 
         } else {
             [$integerPart, $decimalPart] = [$this->value, null];
         }
     
         // add thousand separators
-        if ($htousandSeparator) {
+        if ($thousandSeparator) {
             $integerPart = strrev(
                 chunk_split(
                     strrev($integerPart),

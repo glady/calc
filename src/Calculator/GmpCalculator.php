@@ -59,36 +59,6 @@ class GmpCalculator extends AbstractCalculator implements CalculatorInterface
         // TODO: Implement pow() method.
     }
 
-    public function sum(Number ...$numbers): Number
-    {
-        // TODO: Implement sum() method.
-    }
-
-    public function prod(Number ...$numbers): Number
-    {
-        // TODO: Implement prod() method.
-    }
-
-    public function max(Number ...$numbers): Number
-    {
-        // TODO: Implement max() method.
-    }
-
-    public function min(Number ...$numbers): Number
-    {
-        // TODO: Implement min() method.
-    }
-
-    public function cnt(Number ...$numbers): Number
-    {
-        // TODO: Implement cnt() method.
-    }
-
-    public function avg(Number ...$numbers): Number
-    {
-        // TODO: Implement avg() method.
-    }
-
     public function equal(Number $a, Number $b): bool
     {
         // TODO: Implement equal() method.

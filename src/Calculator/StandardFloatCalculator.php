@@ -70,44 +70,9 @@ class StandardFloatCalculator extends AbstractCalculator implements CalculatorIn
         return new Number($a->getValue() / $b->getValue());
     }
 
-    public function divWithFraction(Number $a, Number $b): Number
-    {
-        // TODO: Implement divWithFraction() method.
-    }
-
     public function pow(Number $a, Number $b): Number
     {
         return new Number(pow($a->getValue(), $b->getValue()));
-    }
-
-    public function sum(Number ...$numbers): Number
-    {
-        // TODO: Implement sum() method.
-    }
-
-    public function prod(Number ...$numbers): Number
-    {
-        // TODO: Implement prod() method.
-    }
-
-    public function max(Number ...$numbers): Number
-    {
-        // TODO: Implement max() method.
-    }
-
-    public function min(Number ...$numbers): Number
-    {
-        // TODO: Implement min() method.
-    }
-
-    public function cnt(Number ...$numbers): Number
-    {
-        // TODO: Implement cnt() method.
-    }
-
-    public function avg(Number ...$numbers): Number
-    {
-        // TODO: Implement avg() method.
     }
 
     public function equal(Number $a, Number $b): bool
